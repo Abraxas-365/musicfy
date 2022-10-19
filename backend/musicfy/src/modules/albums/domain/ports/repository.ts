@@ -5,5 +5,6 @@ export interface IAlbumRepository {
     createAlbum(album: IAlbum): Promise<IAlbum>
     getAllAlbums(): Promise<Array<IAlbum>>
     deleteAlbum(id: number): Promise<void>
+    updateAlbum(query: IAlbum): Promise<void>
 }
 export const IAlbumRepository = Symbol('IAlbumRepository');

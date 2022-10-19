@@ -5,6 +5,7 @@ import { IAlbumService } from "../domain/service/album.initService";
 import { createAlbum } from "./createAlbum";
 import { deleteAlbum } from "./deleteAlbum";
 import { listAllAlbums } from "./listAllAlbums";
+import { updateAlbum } from "./updateAlbum";
 
 
 export const IAlbumApplication = Symbol("IAlbumApplication");
@@ -12,6 +13,7 @@ export interface IAlbumApplication {
     createAlbum(album: IAlbum): Promise<IAlbum>
     listAllAlbums(): Promise<Array<IAlbum>>
     deleteAlbum(albumId: number): Promise<void>
+    updateAlbum(update: IAlbum): Promise<void>
 
 }
 
@@ -23,8 +25,9 @@ export class AlbumApplication implements IAlbumApplication {
     ) {}
 
     createAlbum = createAlbum.bind(this);
-    listAllAlbums = listAllAlbums.bind(this)
-    deleteAlbum = deleteAlbum.bind(this)
+    listAllAlbums = listAllAlbums.bind(this);
+    deleteAlbum = deleteAlbum.bind(this);
+    updateAlbum = updateAlbum.bind(this);
 
 
 

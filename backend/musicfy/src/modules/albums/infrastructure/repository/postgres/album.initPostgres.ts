@@ -5,6 +5,7 @@ import { createAlbum } from './createAlbum';
 import { deleteAlbum } from './deleteAlbum';
 import { getAllAlbums } from './getAllAlbums';
 import { getNumberOfUsers } from './getNumberOfAlbums';
+import { updateAlbum } from './updateAlbum';
 
 @Injectable({})
 export class AlbumRepositoryPostgres implements IAlbumRepository {
@@ -12,8 +13,9 @@ export class AlbumRepositoryPostgres implements IAlbumRepository {
 
     getNumberOfAlbums = getNumberOfUsers.bind(this);
     createAlbum = createAlbum.bind(this);
-    getAllAlbums = getAllAlbums.bind(this)
-    deleteAlbum = deleteAlbum.bind(this)
+    getAllAlbums = getAllAlbums.bind(this);
+    deleteAlbum = deleteAlbum.bind(this);
+    updateAlbum = updateAlbum.bind(this);
 
 
 }

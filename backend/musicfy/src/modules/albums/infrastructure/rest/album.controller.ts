@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Inject, Post, Req, Res } from "@nestjs/common";
+import { Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
 import { Request, Response } from "express";
 import { IAlbumApplication } from "../../application/album.initApplication";
 import { IAlbum } from "../../domain/models/album";
@@ -33,6 +33,21 @@ export class AlbumController {
 
         await this.albumApplication.deleteAlbum(albumId)
         res.sendStatus(200)
+    }
+
+
+    @Put('update/:id')
+    async updateAlbum(@Res() res: Response, @Req() req: Request) {
+        const updateInfo: IAlbum = {
+            id: Number(req.params['id']),
+            name: req.body['name'],
+            artist: req.body['artist'],
+            year: Number(req.body['year'])
+        };
+
+        await this.albumApplication.updateAlbum(updateInfo)
+        res.sendStatus(200)
+
     }
 
 
