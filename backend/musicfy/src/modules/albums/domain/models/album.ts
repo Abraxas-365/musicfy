@@ -4,7 +4,7 @@ import { Column, DataType, Model } from "sequelize-typescript";
 import { number, object, string } from "yup";
 
 export interface IAlbum {
-    id: number
+    id?: number
     name: string,
     artist: string,
     year: number,
