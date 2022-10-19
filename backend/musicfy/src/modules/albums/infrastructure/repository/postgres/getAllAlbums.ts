@@ -4,5 +4,10 @@ import { AlbumRepositoryPostgres } from "./album.initPostgres";
 
 //get all albums
 export async function getAllAlbums(this: AlbumRepositoryPostgres): Promise<Array<IAlbum>> {
-    return await this.albumORM.findAll()
+    return await this.albumORM.findAll({
+        order: [
+            ['id', 'DESC'],
+        ],
+    }
+    )
 }
