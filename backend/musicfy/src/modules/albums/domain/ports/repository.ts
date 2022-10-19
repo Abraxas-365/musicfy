@@ -1,5 +1,3 @@
 export interface IAlbumRepository {
-    // canAlbumBeCreated(): Promise<boolean>
+    getNumberOfAlbums(): Promise<number>
 }
-
-export const IAlbumRepository = Symbol('IAlbumRepository');
