@@ -8,6 +8,5 @@ export async function createAlbum(this: AlbumApplication, album: IAlbum): Promis
         return
     }
     //si se puede
-    this.albumRepository.createAlbum(album)
-
+    return this.albumRepository.createAlbum(album)
 }
