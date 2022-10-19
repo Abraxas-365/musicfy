@@ -1,7 +1,6 @@
 //Un álbum cuenta solo con el nombre, nombre del artista, año del álbum (2010 – 2021) y url de la imagen.
 
-import { DataTypes } from "sequelize";
-import { sequelize } from "src/albums/infrastructure/repository/postgres/album.initPostgres";
+import { Column, DataType, Model } from "sequelize-typescript";
 import { number, object, string } from "yup";
 
 export interface IAlbum {
@@ -11,27 +10,35 @@ export interface IAlbum {
     year: number,
 }
 
-export const Album = object({
+//s
+export const AlbumDTO = object({
     name: string().required("Name is required"),
     artist: string().required("Artist is required"),
     year: number().required("Year is required").min(2010).max(2021)
 })
 
-export const AlbumORM = sequelize.define('albums', {
-    id: {
-        type: DataTypes.INTEGER,
+export class Album extends Model<Album>{
+    @Column({
+        type: DataType.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
-    name: {
-        type: DataTypes.STRING,
-    },
-    artist: {
-        type: DataTypes.STRING,
-    },
-    year: {
-        type: DataTypes.INTEGER,
-    }
+    })
+    id: number;
 
+    @Column({
+        type: DataType.STRING,
+    })
+    name: string;
 
-})
+    @Column({
+        type: DataType.STRING,
+    })
+    artista: string;
+
+    @Column({
+        type: DataType.INTEGER,
+    })
+    year: string;
+
+}
+
