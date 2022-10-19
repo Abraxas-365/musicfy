@@ -3,11 +3,13 @@ import { IAlbum } from "../domain/models/album";
 import { IAlbumRepository } from "../domain/ports/repository";
 import { IAlbumService } from "../domain/service/album.initService";
 import { createAlbum } from "./createAlbum";
+import { listAllAlbums } from "./listAllAlbums";
 
 
 export const IAlbumApplication = Symbol("IAlbumApplication");
 export interface IAlbumApplication {
     createAlbum(album: IAlbum): Promise<IAlbum>
+    listAllAlbums(): Promise<Array<IAlbum>>
 
 }
 
@@ -19,6 +21,7 @@ export class AlbumApplication implements IAlbumApplication {
     ) {}
 
     createAlbum = createAlbum.bind(this);
+    listAllAlbums = listAllAlbums.bind(this)
 
 
 
