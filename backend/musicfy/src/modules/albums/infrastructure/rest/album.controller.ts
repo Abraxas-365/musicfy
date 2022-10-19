@@ -15,17 +15,25 @@ export class AlbumController {
             artist: req.body['artist'],
             year: Number(req.body['year'])
         };
-        const a = await this.albumApplication.createAlbum(newAlbum);
-        res.status(200).json(a)
+        const album = await this.albumApplication.createAlbum(newAlbum);
+        res.status(200).json(album)
     }
 
     //list all albums
     @Get('list')
-    async listAllAlbums(@Res() res: Response, @Req() req: Request) {
+    async listAllAlbums(@Res() res: Response) {
         const albums = await this.albumApplication.listAllAlbums()
         res.status(200).json(albums)
     }
 
+
+    @Delete('delete/:id')
+    async deleteAlbum(@Res() res: Response, @Req() req: Request) {
+        const albumId = Number(req.params['id'])
+
+        await this.albumApplication.deleteAlbum(albumId)
+        res.sendStatus(200)
+    }
 
 
 
