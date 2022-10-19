@@ -10,7 +10,6 @@ export interface IAlbum {
     year: number,
 }
 
-//s
 export const AlbumDTO = object({
     name: string().required("Name is required"),
     artist: string().required("Artist is required"),

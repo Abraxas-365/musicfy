@@ -1,5 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
+import { AlbumORM } from "src/modules/albums/domain/models/album";
 
+export const IDatabase = Symbol("IFechasRepo");
 export const databaseProviders = [
     {
         provide: 'SEQUELIZE',
@@ -12,7 +14,7 @@ export const databaseProviders = [
                 password: 'password',
                 database: 'musicfy',
             });
-            sequelize.addModels([]);
+            sequelize.addModels([AlbumORM]);
             await sequelize.sync();
             return sequelize;
         },
