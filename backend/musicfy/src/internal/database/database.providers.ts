@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
-import { AlbumORM } from "src/modules/albums/domain/models/album";
+import { Album } from "src/modules/albums/domain/models/album";
 
 export const IDatabase = Symbol("IFechasRepo");
 export const databaseProviders = [
@@ -8,13 +8,13 @@ export const databaseProviders = [
         useFactory: async () => {
             const sequelize = new Sequelize({
                 dialect: 'postgres',
-                host: 'localhost',
+                host: 'db',
                 port: 5432,
-                username: 'root',
-                password: 'password',
+                username: 'postgres',
+                password: 'postgres',
                 database: 'musicfy',
             });
-            sequelize.addModels([AlbumORM]);
+            sequelize.addModels([Album]);
             await sequelize.sync();
             return sequelize;
         },

@@ -1,6 +1,6 @@
 //Un álbum cuenta solo con el nombre, nombre del artista, año del álbum (2010 – 2021) y url de la imagen.
 
-import { Column, DataType, Model } from "sequelize-typescript";
+import { Column, DataType, Model, Table } from "sequelize-typescript";
 import { number, object, string } from "yup";
 
 export interface IAlbum {
@@ -16,6 +16,9 @@ export const AlbumDTO = object({
     year: number().required("Year is required").min(2010).max(2021)
 })
 
+export const AlbumORM = "AlbumORM";
+
+@Table
 export class Album extends Model<Album>{
     @Column({
         type: DataType.INTEGER,
@@ -32,12 +35,12 @@ export class Album extends Model<Album>{
     @Column({
         type: DataType.STRING,
     })
-    artista: string;
+    artist: string;
 
     @Column({
         type: DataType.INTEGER,
     })
-    year: string;
+    year: number;
 
 }
 

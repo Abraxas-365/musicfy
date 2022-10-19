@@ -5,6 +5,7 @@ import { canAlbumBeCreated } from './canAlbumBeCreated';
 export interface IAlbumService {
     canAlbumBeCreated(): Promise<boolean>
 }
+export const IAlbumService = Symbol('IAlbumService');
 
 
 @Injectable({})
