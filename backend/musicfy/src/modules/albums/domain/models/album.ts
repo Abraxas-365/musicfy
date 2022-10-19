@@ -8,12 +8,14 @@ export interface IAlbum {
     name: string,
     artist: string,
     year: number,
+    url: string
 }
 
 export const AlbumDTO = object({
     name: string().required("Name is required"),
     artist: string().required("Artist is required"),
-    year: number().required("Year is required").min(2010).max(2021)
+    year: number().required("Year is required").min(2010).max(2021),
+    url: string().email().required("email is required")
 })
 
 export const AlbumORM = "AlbumORM";
@@ -42,5 +44,9 @@ export class Album extends Model<Album>{
     })
     year: number;
 
+    @Column({
+        type: DataType.STRING,
+    })
+    url: string;
 }
 
