@@ -1,4 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
+import { ISongApplication } from "src/modules/songs/application/song.initApplication";
 import { IAlbum } from "../domain/models/album";
 import { IAlbumRepository } from "../domain/ports/repository";
 import { IAlbumService } from "../domain/service/album.initService";
@@ -21,7 +22,8 @@ export interface IAlbumApplication {
 export class AlbumApplication implements IAlbumApplication {
     constructor(
         @Inject(IAlbumService) protected albumService: IAlbumService,
-        @Inject(IAlbumRepository) protected albumRepository: IAlbumRepository
+        @Inject(IAlbumRepository) protected albumRepository: IAlbumRepository,
+        @Inject(ISongApplication) protected songApplication: ISongApplication
     ) {}
 
     createAlbum = createAlbum.bind(this);

@@ -1,6 +1,5 @@
 import { Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
 import { Request, Response } from "express";
-import { url } from "inspector";
 import { IAlbumApplication } from "../../application/album.initApplication";
 import { IAlbum } from "../../domain/models/album";
 
