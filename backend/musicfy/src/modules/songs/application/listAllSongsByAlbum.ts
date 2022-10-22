@@ -4,7 +4,7 @@ import { SongApplication } from "./song.initApplication";
 
 
 //list all songs in the repository by album
-export async function listAllAlbums(this: SongApplication, albumId: number): Promise<Array<ISong>> {
+export async function listAllSongsByAlbum(this: SongApplication, albumId: number): Promise<Array<ISong>> {
 
     return await this.songRepository.getSongsByAlbum(albumId)
 

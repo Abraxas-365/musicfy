@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
 import { Request, Response } from "express";
+import { BaseError } from "src/internal/errors/badeError";
 import { IAlbumApplication } from "../../application/album.initApplication";
 import { IAlbum } from "../../domain/models/album";
 
@@ -16,12 +17,16 @@ export class AlbumController {
             year: Number(req.body['year']),
             url: req.body['url']
         };
-        const album = await this.albumApplication.createAlbum(newAlbum);
-        res.status(200).json(album)
+        try {
+            const album = await this.albumApplication.createAlbum(newAlbum);
+            res.status(200).json(album)
+        } catch (err: any | BaseError) {
+            res.sendStatus(err.statusCode)
+        }
     }
 
     //list all albums
-    @Get('list')
+    @Get('')
     async listAllAlbums(@Res() res: Response) {
         const albums = await this.albumApplication.listAllAlbums()
         res.status(200).json(albums)

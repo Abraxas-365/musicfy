@@ -1,9 +1,10 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { Song, SongORM } from "src/modules/songs/domain/models/song";
+import { ISong, Song, SongORM } from "src/modules/songs/domain/models/song";
 import { ISongRepository } from "src/modules/songs/domain/ports/repository";
 import { createSong } from "./createSong";
 import { deleteSong } from "./deleteSong";
 import { deleteAlbum } from "./deleteSongByAlbum";
+import { getAllSongs } from "./getAllSongs";
 import { getSongsByAlbum } from "./getSongsByAlbum";
 import { updateSong } from "./updateSong";
 
@@ -18,6 +19,7 @@ export class SongRepositoryPostgres implements ISongRepository {
     deleteSongByAlbum = deleteAlbum.bind(this)
     getSongsByAlbum = getSongsByAlbum.bind(this)
     updateSong = updateSong.bind(this)
+    getAllSongs = getAllSongs.bind(this)
 
 
 }

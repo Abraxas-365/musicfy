@@ -20,10 +20,17 @@ export class SongController {
 
     //list all Songs by album id
     @Get('list/:albumId')
-    async listAllSongs(@Res() res: Response, @Req() req: Request) {
+    async listAllSongsByAlbum(@Res() res: Response, @Req() req: Request) {
 
         const albumId = Number(req.params['albumId'])
         const Songs = await this.songApplication.listAllSongsByAlbum(albumId)
+        res.status(200).json(Songs)
+    }
+
+    @Get('list')
+    async listAllSongs(@Res() res: Response) {
+
+        const Songs = await this.songApplication.listAllSongs()
         res.status(200).json(Songs)
     }
 

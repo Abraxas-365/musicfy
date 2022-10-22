@@ -4,7 +4,8 @@ import { ISongRepository } from "../domain/ports/repository";
 import { createSong } from "./createSong";
 import { deleteSong } from "./deleteSong";
 import { deleteSongsByAlbum } from "./deleteSongsByAlbum";
-import { listAllAlbums } from "./listAllSongsByAlbum";
+import { listAllSongs } from "./listAllSongs";
+import { listAllSongsByAlbum } from "./listAllSongsByAlbum";
 import { updateSong } from "./updateSong";
 
 export const ISongApplication = Symbol("ISongApplication");
@@ -14,6 +15,8 @@ export interface ISongApplication {
     deleteSongsByAlbum(albumId: number): Promise<void>
     deleteSong(songId: number): Promise<void>
     updateSong(update: ISong): Promise<void>
+    listAllSongs(): Promise<Array<ISong>>
+
 
 }
 
@@ -24,9 +27,10 @@ export class SongApplication implements ISongApplication {
     ) {}
 
     createSong = createSong.bind(this)
-    listAllSongsByAlbum = listAllAlbums.bind(this)
+    listAllSongsByAlbum = listAllSongsByAlbum.bind(this)
     deleteSongsByAlbum = deleteSongsByAlbum.bind(this)
     deleteSong = deleteSong.bind(this)
+    listAllSongs = listAllSongs.bind(this)
     updateSong = updateSong.bind(this)
 
 
