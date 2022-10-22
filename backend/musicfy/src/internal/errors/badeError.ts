@@ -3,8 +3,7 @@ export class BaseError extends Error {
     statusCode: number
     isOperational: boolean
 
-
-    constructor(name: string, statusCode: number, isOperational: boolean, description: string) {
+    constructor(name: string, description: string, statusCode: number, isOperational: boolean) {
         super(description)
 
         Object.setPrototypeOf(this, new.target.prototype)

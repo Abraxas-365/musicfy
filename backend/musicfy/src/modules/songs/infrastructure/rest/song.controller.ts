@@ -14,8 +14,13 @@ export class SongController {
             name: req.body['name'],
             album_id: Number(req.body['album_id']),
         };
-        const Song = await this.songApplication.createSong(newSong);
-        res.status(200).json(Song)
+        try {
+            const Song = await this.songApplication.createSong(newSong);
+            res.status(200).json(Song)
+        } catch (err: any) {
+            console.log(err)
+            res.sendStatus(err.statusCode)
+        }
     }
 
     //list all Songs by album id
