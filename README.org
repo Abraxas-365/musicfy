@@ -1,0 +1,19 @@
+#+TITLE:MusicFy
+
+* Para iniciar la app
+
+** Manera 1 *recomendada Docker*
+- Descargar Docker y docker-compose
+- Correr los siguientes comandos
+#+begin_src bash
+docker-compese build
+
+docker-compose up
+#+end_src
+- esperar a que los containers levanten
+
+** Manera 2 *correindo cada app por separado*
+- Entrar a la carpeta backend
+- Modificar el .env para apuntar a su base de datos
+- Ejecutar el projecto con yarn start
+- Ir al front end y ejecutar yarn start
