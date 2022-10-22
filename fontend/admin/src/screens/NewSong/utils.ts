@@ -10,7 +10,7 @@ export const handleFormSubmit = async (values: IValues, navigate: NavigateFuncti
     let resp = await apiSong.post('/create', { name: values.name, album_id: Number(values.album_id) })
 
     if (resp.status === 204) {
-        alert('to many albums')
+        alert('album not exist')
         return
     }
     navigate('/song')
