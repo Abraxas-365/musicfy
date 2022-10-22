@@ -5,6 +5,7 @@ import { IAlbumRepository } from "../domain/ports/repository";
 import { IAlbumService } from "../domain/service/album.initService";
 import { createAlbum } from "./createAlbum";
 import { deleteAlbum } from "./deleteAlbum";
+import { getAlbumById } from "./getAlbumById";
 import { listAllAlbums } from "./listAllAlbums";
 import { updateAlbum } from "./updateAlbum";
 
@@ -15,6 +16,7 @@ export interface IAlbumApplication {
     listAllAlbums(): Promise<Array<IAlbum>>
     deleteAlbum(albumId: number): Promise<void>
     updateAlbum(update: IAlbum): Promise<void>
+    getAlbumById(albumId: number): Promise<IAlbum>
 
 }
 
@@ -29,6 +31,7 @@ export class AlbumApplication implements IAlbumApplication {
     createAlbum = createAlbum.bind(this);
     listAllAlbums = listAllAlbums.bind(this);
     deleteAlbum = deleteAlbum.bind(this);
+    getAlbumById = getAlbumById.bind(this)
     updateAlbum = updateAlbum.bind(this);
 
 

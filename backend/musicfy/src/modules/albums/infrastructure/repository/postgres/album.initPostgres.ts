@@ -3,6 +3,7 @@ import { Album, AlbumORM } from 'src/modules/albums/domain/models/album';
 import { IAlbumRepository } from 'src/modules/albums/domain/ports/repository';
 import { createAlbum } from './createAlbum';
 import { deleteAlbum } from './deleteAlbum';
+import { getAlbumById } from './getAlbumById';
 import { getAllAlbums } from './getAllAlbums';
 import { getNumberOfUsers } from './getNumberOfAlbums';
 import { updateAlbum } from './updateAlbum';
@@ -16,6 +17,7 @@ export class AlbumRepositoryPostgres implements IAlbumRepository {
     getAllAlbums = getAllAlbums.bind(this);
     deleteAlbum = deleteAlbum.bind(this);
     updateAlbum = updateAlbum.bind(this);
+    getAlbumById = getAlbumById.bind(this)
 
 
 }

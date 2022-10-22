@@ -32,6 +32,13 @@ export class AlbumController {
         res.status(200).json(albums)
     }
 
+    @Get(':id')
+    async getAlbumById(@Res() res: Response, @Req() req: Request) {
+        const albumId = Number(req.params['id'])
+        const albums = await this.albumApplication.getAlbumById(albumId)
+        res.status(200).json(albums)
+    }
+
 
     @Delete('delete/:id')
     async deleteAlbum(@Res() res: Response, @Req() req: Request) {
