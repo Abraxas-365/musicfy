@@ -12,14 +12,15 @@ docker-compose up
 #+end_src
 - esperar a que los containers levanten
 
-** Manera 2 *correindo cada app por separado*
+*** Manera 2 *correindo cada app por separado*
 - Entrar a la carpeta backend
 - Modificar el .env para apuntar a su base de datos
 - Ejecutar el projecto con yarn start
 - Ir al front end y ejecutar yarn start
 
 [[https://github.com/Abraxas-365/musicfy/blob/main/img/album.png]]
-https://github.com/Abraxas-365/musicfy/blob/main/img/create.png
-https://github.com/Abraxas-365/musicfy/blob/main/img/sorting.png
+[[https://github.com/Abraxas-365/musicfy/blob/main/img/create.png]]
+[[https://github.com/Abraxas-365/musicfy/blob/main/img/sorting.png]]
+
 [[https://github.com/Abraxas-365/musicfy/blob/main/img/modoDia.png]]
 [[https://github.com/Abraxas-365/musicfy/blob/main/img/edit.png]]
