@@ -18,4 +18,8 @@ docker-compose up
 - Ejecutar el projecto con yarn start
 - Ir al front end y ejecutar yarn start
 
-[[../im]]g/album.png
+[[https://github.com/Abraxas-365/musicfy/blob/main/img/album.png]]
+https://github.com/Abraxas-365/musicfy/blob/main/img/create.png
+https://github.com/Abraxas-365/musicfy/blob/main/img/sorting.png
+[[https://github.com/Abraxas-365/musicfy/blob/main/img/modoDia.png]]
+[[https://github.com/Abraxas-365/musicfy/blob/main/img/edit.png]]
