@@ -17,3 +17,5 @@ docker-compose up
 - Modificar el .env para apuntar a su base de datos
 - Ejecutar el projecto con yarn start
 - Ir al front end y ejecutar yarn start
+
+[[../im]]g/album.png
