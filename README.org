@@ -1,6 +1,6 @@
 #+TITLE:MusicFy
 
-* Para iniciar la app
+* Para iniciar la ap
 
 ** Manera 1 *recomendada Docker*
 - Descargar Docker y docker-compose
