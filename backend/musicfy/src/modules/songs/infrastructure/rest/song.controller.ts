@@ -12,7 +12,7 @@ export class SongController {
     async createSong(@Res() res: Response, @Req() req: Request) {
         const newSong: ISong = {
             name: req.body['name'],
-            albumId: Number(req.body['album_id']),
+            album_id: Number(req.body['album_id']),
         };
         const Song = await this.songApplication.createSong(newSong);
         res.status(200).json(Song)
@@ -27,10 +27,17 @@ export class SongController {
         res.status(200).json(Songs)
     }
 
-    @Get('list')
+    @Get('')
     async listAllSongs(@Res() res: Response) {
 
         const Songs = await this.songApplication.listAllSongs()
+        res.status(200).json(Songs)
+    }
+
+    @Get(':id')
+    async getSongById(@Res() res: Response, @Req() req: Request) {
+        const SongId = Number(req.params['id'])
+        const Songs = await this.songApplication.getSongById(SongId)
         res.status(200).json(Songs)
     }
 
@@ -52,7 +59,7 @@ export class SongController {
         const updateInfo: ISong = {
             id: Number(req.params['id']),
             name: req.body['name'] || "",
-            albumId: Number(req.body['album_id']) || 0,
+            album_id: Number(req.body['album_id']) || 0,
         };
 
         await this.songApplication.updateSong(updateInfo)

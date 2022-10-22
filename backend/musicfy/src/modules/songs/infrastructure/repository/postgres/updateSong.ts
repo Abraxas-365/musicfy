@@ -3,7 +3,7 @@ import { SongRepositoryPostgres } from "./song.initPostgres";
 
 interface IQuery {
     name?: string,
-    albumId?: number
+    album_id?: number
 }
 //create a new album
 export async function updateSong(this: SongRepositoryPostgres, update: ISong): Promise<void> {
@@ -14,8 +14,8 @@ export async function updateSong(this: SongRepositoryPostgres, update: ISong): P
         query.name = update.name;
     }
 
-    if (update.albumId != 0) {
-        query.albumId = update.albumId;
+    if (update.album_id != 0) {
+        query.album_id = update.album_id;
     }
 
     await this.songORM.update(query, {

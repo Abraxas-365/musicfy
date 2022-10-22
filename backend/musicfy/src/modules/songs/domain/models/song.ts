@@ -7,7 +7,7 @@ import { object, string } from "yup";
 export interface ISong {
     id?: number
     name: string,
-    albumId: number//album id
+    album_id: number//album id
 }
 
 export const SongDTO = object({
@@ -30,14 +30,14 @@ export class Song extends Model<Song>{
     })
     name: string;
 
-@ForeignKey(() => Album)
+    @ForeignKey(() => Album)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
-    albumId:number;
+    album_id: number;
 
-@BelongsTo(() => Album)
+    @BelongsTo(() => Album)
     album: Album;
 
 }

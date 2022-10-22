@@ -5,6 +5,7 @@ import { createSong } from "./createSong";
 import { deleteSong } from "./deleteSong";
 import { deleteAlbum } from "./deleteSongByAlbum";
 import { getAllSongs } from "./getAllSongs";
+import { getSongById } from "./getSongById";
 import { getSongsByAlbum } from "./getSongsByAlbum";
 import { updateSong } from "./updateSong";
 
@@ -20,6 +21,7 @@ export class SongRepositoryPostgres implements ISongRepository {
     getSongsByAlbum = getSongsByAlbum.bind(this)
     updateSong = updateSong.bind(this)
     getAllSongs = getAllSongs.bind(this)
+    getSongById = getSongById.bind(this)
 
 
 }

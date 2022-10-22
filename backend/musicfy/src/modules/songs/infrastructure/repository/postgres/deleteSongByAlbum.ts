@@ -4,7 +4,7 @@ import { SongRepositoryPostgres } from "./song.initPostgres";
 export async function deleteAlbum(this: SongRepositoryPostgres, albumId: number): Promise<void> {
     await this.songORM.destroy({
         where: {
-            albumId: albumId
+            album_id: albumId
         }
     });
     return

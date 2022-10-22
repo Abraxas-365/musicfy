@@ -5,7 +5,7 @@ import { SongRepositoryPostgres } from "./song.initPostgres";
 export async function getSongsByAlbum(this: SongRepositoryPostgres, albumId: number): Promise<Array<ISong>> {
     return await this.songORM.findAll({
         where: {
-            albumId: albumId
+            album_id: albumId
         },
 
         order: [
