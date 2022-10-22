@@ -1,8 +1,7 @@
-import { Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Post, Put, Req, Res, UsePipes } from "@nestjs/common";
 import { Request, Response } from "express";
-import { BaseError } from "src/internal/errors/badeError";
 import { IAlbumApplication } from "../../application/album.initApplication";
-import { IAlbum } from "../../domain/models/album";
+import { AlbumDTO, IAlbum } from "../../domain/models/album";
 
 @Controller('album')
 export class AlbumController {
@@ -10,17 +9,11 @@ export class AlbumController {
 
     //create an album
     @Post('create')
-    async createAlbum(@Res() res: Response, @Req() req: Request) {
-        const newAlbum: IAlbum = {
-            name: req.body['name'],
-            artist: req.body['artist'],
-            year: Number(req.body['year']),
-            url: req.body['url']
-        };
+    async createAlbum(@Res() res: Response, @Body() newAlbum: AlbumDTO): Promise<void> {
         try {
             const album = await this.albumApplication.createAlbum(newAlbum);
             res.status(200).json(album)
-        } catch (err: any | BaseError) {
+        } catch (err: any) {
             res.sendStatus(err.statusCode)
         }
     }
@@ -50,13 +43,13 @@ export class AlbumController {
 
 
     @Put('update/:id')
-    async updateAlbum(@Res() res: Response, @Req() req: Request) {
+    async updateAlbum(@Res() res: Response, @Body() album: AlbumDTO, @Req() req: Request) {
         const updateInfo: IAlbum = {
             id: Number(req.params['id']),
-            name: req.body['name'] || "",
-            artist: req.body['artist'] || "",
-            year: Number(req.body['year']) || 0,
-            url: req.body['url'] || ""
+            name: album['name'] || "",
+            artist: album['artist'] || "",
+            year: Number(album['year']) || 0,
+            url: album['url'] || ""
         };
 
         await this.albumApplication.updateAlbum(updateInfo)

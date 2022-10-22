@@ -1,7 +1,7 @@
-import { Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Post, Put, Req, Res } from "@nestjs/common";
 import { Request, Response } from "express";
 import { ISongApplication } from "../../application/song.initApplication";
-import { ISong } from "../../domain/models/song";
+import { ISong, SongDTO } from "../../domain/models/song";
 
 @Controller('song')
 export class SongController {
@@ -9,11 +9,7 @@ export class SongController {
 
     //create an album
     @Post('create')
-    async createSong(@Res() res: Response, @Req() req: Request) {
-        const newSong: ISong = {
-            name: req.body['name'],
-            album_id: Number(req.body['album_id']),
-        };
+    async createSong(@Res() res: Response, @Body() newSong: SongDTO) {
         try {
             const Song = await this.songApplication.createSong(newSong);
             res.status(200).json(Song)
@@ -59,12 +55,12 @@ export class SongController {
 
 
     @Put('update/:id')
-    async updateSong(@Res() res: Response, @Req() req: Request) {
+    async updateSong(@Res() res: Response, @Req() req: Request, @Body() song: SongDTO) {
 
         const updateInfo: ISong = {
             id: Number(req.params['id']),
-            name: req.body['name'] || "",
-            album_id: Number(req.body['album_id']) || 0,
+            name: song.name || "",
+            album_id: song.album_id || 0,
         };
 
         await this.songApplication.updateSong(updateInfo)

@@ -1,7 +1,8 @@
 //Un álbum cuenta solo con el nombre, nombre del artista, año del álbum (2010 – 2021) y url de la imagen.
 
+import { IsNotEmpty, IsInt, Max, Min, IsUrl } from "class-validator";
 import { Column, DataType, Model, Table } from "sequelize-typescript";
-import { number, object, string } from "yup";
+
 
 export interface IAlbum {
     id?: number
@@ -11,12 +12,22 @@ export interface IAlbum {
     url: string
 }
 
-export const AlbumDTO = object({
-    name: string().required("Name is required"),
-    artist: string().required("Artist is required"),
-    year: number().required("Year is required").min(2010).max(2021),
-    url: string().email().required("email is required")
-})
+export class AlbumDTO {
+    @IsNotEmpty()
+    name: string;
+
+    @IsNotEmpty()
+    artist: string;
+
+    @IsInt()
+    @Min(2010)
+    @Max(2021)
+    year: number;
+
+    @IsUrl()
+    url: string
+
+}
 
 export const AlbumORM = "AlbumORM";
 
