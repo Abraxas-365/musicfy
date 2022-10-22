@@ -6,7 +6,7 @@
 - Descargar Docker y docker-compose
 - Correr los siguientes comandos
 #+begin_src bash
-docker-compese build
+docker-compose build
 
 docker-compose up
 #+end_src
