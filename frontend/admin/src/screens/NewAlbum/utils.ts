@@ -12,7 +12,7 @@ export const handleFormSubmit = async (values: IValues, navigate: NavigateFuncti
     let resp = await apiAlbum.post('/create', values)
 
     if (resp.status === 204) {
-        alert('to many albums')
+        alert('too many albums')
         return
     }
     navigate('/album')
